@@ -1,0 +1,23 @@
+                OUTPUT 2500AD
+.ORG 2000H
+DATA SEGMENT
+NO1 DW 0050H
+NO2 DW 0040H
+DIF DW 0000H
+BOR DB 00H
+DATA ENDS
+CODE SEGMENT
+        ASSUME CS:CODE , DS:DATA
+        MOV AX,DATA
+        MOV DS,AX
+        MOV AX,NO1
+        MOV CL,00H
+        MOV BX,NO2
+        SUB AX,BX
+        JNC L1
+        INC CL
+L1:
+        MOV DIF,AX
+        MOV BOR,CL
+CODE ENDS
+END
